@@ -1,0 +1,232 @@
+<!--::header part start::-->
+{% extends 'Clinic_Essentials/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    hr{
+        color: white;
+        background: white;
+    }
+    .flex_box{
+        display: flex;
+    }
+    #address{
+        flex:1;
+    }
+    #contact{
+        flex:1;
+    }
+    #emergency_contact{
+        flex:1;
+    }
+    .flex_box div{
+        border: 1px solid black;
+        padding: 10px;
+        margin: 3px;
+        background: rgb(93, 68, 117);
+        border-top-right-radius: 30px;
+        border-bottom-left-radius: 30px;
+        text-align: center;
+    }
+
+</style>
+<header class="main_menu home_menu">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="navbar-brand" href="/">
+                        <!-- <h1>Advance Skin , Hair And Laser Clinic</h1> -->
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse main-menu-item justify-content-center"
+                        id="navbarSupportedContent">
+                        <ul class="navbar-nav align-items-center">
+
+                        </ul>
+                    </div>
+                    <a class="btn_2 d-none d-lg-block" href="/blog" style="margin-right: 5px;" >Blog</a>
+                    <a class="btn_2 d-none d-lg-block" href="/gallery" style="margin-right: 5px;" >Gallery</a>
+                    <a class="btn_2 d-none d-lg-block" href="#facilities" style="margin-right: 5px;">Facilities</a>
+                    <a class="btn_2 d-none d-lg-block" href="#services" style="margin-right: 5px;" >Services</a>
+                    <a class="btn_2 d-none d-lg-block" href="#contact" style="margin-right: 5px;" >Address</a>
+                    <a class="btn_2 d-none d-lg-block" href="#contact" style="margin-right: 5px;" >Contact</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Header part end-->
+
+<!-- banner part start-->
+<section class="banner_part">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-5 col-xl-5">
+                <div class="banner_text">
+                    <div class="banner_text_iner" id="appointment">
+                        <h1>Advance Skin , Hair And Laser Clinic</h1>
+                        <h5>We are here for your care. Your Health is our top priority.</h5>
+
+                        <a class="btn_2 accordion" id="quickk">Request Appointment</a>
+                        <div class="panel">
+                            <form method="POST" action='/appointment/' class="form-group comment-form">
+                                {% csrf_token %}
+                                <input class="form-control" type="text" placeholder="Patient's Name" name="patient_name">
+                                <input class="form-control" type="text" style="margin-top: 5px;" placeholder="Contact Number" name="contact_number">
+                                <textarea class="form-control" rows=3 cols=44 style="margin-top: 5px;" placeholder="Problem Details" name="problem_detail"></textarea>
+                                <input class="btn btn-primary" type="submit" style="margin-top: 5px;" value="Submit Details">
+                            </form>
+                        </div>
+                        <h3 style="color:red">{{ message }}</h3>
+                        <a class="btn_2 accordion" id="quickk">Provide Feedback To Our Doctor</a>
+                        <div class="panel">
+                                <form method="POST" class="form-group comment-form">
+                                    <input class="form-control" type="text" placeholder="Name(Optional)" name="name">
+                                    <input class="form-control" type="text" style="margin-top: 5px;" placeholder="Contact Number(Optional)" name="contact_number">
+                                    <textarea class="form-control" rows=3 cols=44 style="margin-top: 5px;" placeholder="Write Your Feedback Here"></textarea>
+                                    <input class="btn btn-primary" type="submit" style="margin-top: 5px;" value="Submit Feedback">
+                                </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="banner_img">
+                    <img src='{% static "img/banner_img.png" alt="" %}'>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- banner part e d-->
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            /* Toggle between adding and
+                       removing the "active" class, to highlight the button that controls the panel */
+            this.classList.toggle("active"); /* Toggle between hiding and showing the active panel */
+            var
+                panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    }
+</script>
+
+
+
+<!-- feature_part start-->
+<section class="feature_part" id="services">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-8">
+                <div class="section_tittle text-center">
+                    <h2>Our services</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-between align-items-center">
+            <div class="col-lg-3 col-sm-12">
+                <div class="single_feature">
+                    <div class="single_feature_part">
+                        <span class="single_feature_icon"><img src='{% static "img/favicon.png" %}' alt=""></span>
+                        <h4>Bundled with features</h4>
+                        <p>Using state-of-the-art machine learning techniques and smart storage of data, we make sure
+                            the best possible solution in provided when it comes to emergencies</p>
+                    </div>
+                </div>
+                <div class="single_feature">
+                    <div class="single_feature_part">
+                        <span class="single_feature_icon"><img src='{% static "img/favicon.png" %}' alt=""></span>
+                        <h4>Once Click call</h4>
+                        <p>No login required, no lengthy forms. Just one click of a button and bare essential details to
+                            call and ambulance</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+                <div class="single_feature_img">
+                    <img src='{% static "img/service.png" %}' alt="">
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-12">
+                <div class="single_feature">
+                    <div class="single_feature_part">
+                        <span class="single_feature_icon"><img src='{% static "img/favicon.png" %}' alt=""></span>
+                        <h4>Easy to Use</h4>
+                        <p>You can call an ambulance in your hour of need without much hassle. Simple UI, soothing
+                            interface and no ads</p>
+                    </div>
+                </div>
+                <div class="single_feature">
+                    <div class="single_feature_part">
+                        <span class="single_feature_icon"><img src='{% static "img/favicon.png" %}' alt=""></span>
+                        <h4>One stop solution</h4>
+                        <p>Whether you are a patient or the ambulance driver, manage the situation on the same platform quickly</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="container" id="facilities">
+    <div class="row justify-content-center">
+        <div class="col-xl-8">
+            <div class="section_tittle text-center">
+                <h2>Our Facilities</h2>
+            </div>
+        </div>
+    </div>
+
+<div class="container" id="contact">
+    <div class="flex_box">
+        <div id="address">
+            <h1 style="color:white">Address</h1>
+            <p style="color:white;">fhghsbgjvbhfjg</p>
+            <p style="color:white;">Baharaich</p>
+        </div>
+        <div id="contact">
+            <h1 style="color:white">Contact</h1>
+            <p style="color:white;">Whatever problem you are facing kindly fill that in form below. Our expert will contact you as soon
+                as possible</p>
+            <a class="btn_2" href="#appointment">Make Appointment</a>
+
+        </div>
+        <div id="emergency_contact">
+            <h1 style="color:white">Emergency Contact</h1>
+            <p style="color:white;">+91-9454629483</p>
+            <p style="color:white;"><i class="fa fa-phone" aria-hidden="true"></i>
+                You can call us on this number for emergency services. Our expert will do their best to cure your problem</p>
+            
+        </div>
+        <div id="Schedules">
+                <h1 style="color:white">Schedules</h1>
+                <ul>
+                    <li><h3 style="color:white;">Mon - Fri   8:00 AM - 6:00 PM</h3></li><hr>
+                    <li><h3 style="color:white;">Sat - on leave</h3></li><hr>
+                    <li><h3 style="color:white;">Sun - on leave</h3></li><hr>
+                </ul>
+            </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+{% endblock %}
+<!-- feature_part start-->
